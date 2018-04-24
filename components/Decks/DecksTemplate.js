@@ -1,25 +1,23 @@
 import React from 'react'
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import DeckListItem from '../DeckListItem'
+// TODO: delte the styling file as it's not needed?
 import styles from './DecksStyling'
 
 
-const DecksTemplate = (decks) => (
-    <View style={styles.container}>
+const DecksTemplate = (decks, openDeck) => (
         <FlatList 
             data={decks}
-            renderItem={renderItem}
-            keyExtractor={keyExtractor}
+            renderItem={({ item }) => (
+                <DeckListItem
+                    id={item.title}
+                    deckTitle={item.title}
+                    deckCardsNumber={item.questions? item.questions.length: 0}
+                    openDeck={openDeck}
+                />
+            )}
+            keyExtractor={(deck) => deck.title}
         />
-    </View>
 )
-
-const renderItem = ({ item }) => (
-    <View>
-        <Text>{item.title}</Text>
-        <Text>{item.questions? item.questions.length : 0} cards</Text>
-    </View>
-)
-const keyExtractor = (deck) => deck.title
-
 
 export default DecksTemplate

@@ -12,10 +12,14 @@ class Decks extends Component {
         this.setState({ decks: getDefaultDecks() })
     }
 
+    openDeck = (id) => {
+        console.log(`Clicked on Deck ${id}`)
+    }
+
     render() {
         const { decks } = this.state
         return (
-            DecksTemplate(decks)
+            DecksTemplate(decks, this.openDeck)
         )
     }
 }
