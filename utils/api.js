@@ -1,7 +1,7 @@
 import { AsyncStorage } from 'react-native'
 
 
-export const defaultData = {
+export const defaultDecks = {
     React: {
         title: 'React',
         questions: [
@@ -31,14 +31,17 @@ export const defaultData = {
     }
 }
 
+export function getDefaultDecks() {
+    return Object.keys(defaultDecks).map((deckKey) => defaultDecks[deckKey])
+}
+
 
 export function getDecks() {
-    return AsyncStorage.getAllKeys(
+    return AsyncStorage.getAllKeys()
         .then((result) => {
             const data = JSON.parse(result)
             console.log(data)
         })
-    )
 }
 
 export function getDeck(id) {
