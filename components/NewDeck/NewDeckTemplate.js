@@ -1,27 +1,33 @@
-/**
- * This is a generated Template for NewDeck Component.
- * This is used to better organize things.
- *
- * You can copy the content of the JSX content into the render 
- * function of the component.
- *
- * For more React Native UI component, check: 
- * https://facebook.github.io/react-native/docs/components-and-apis.html#basic-components
- *
- * It can be safely deleted.
- */
-
 import React from 'react'
-import { View, Text } from 'react-native'
+import { 
+    View, 
+    Text, 
+    KeyboardAvoidingView, 
+    TextInput,
+    TouchableOpacity
+} from 'react-native'
 import styles from './NewDeckStyling'
 
-
-const NewDeckTemplate = () => (
-    <View style={styles.container}>
-        <Text style={styles.fonty}>
-            This is <Text style={styles.pretty}>NewDeck</Text> component.
+const NewDeckTemplate = (deckTitle, changeDeckTitle, persistNewDeck) => (
+    <KeyboardAvoidingView style={styles.container} behavior='padding' enabled>
+        <Text style={styles.bigTitle}>
+            What is the title of your new deck?
         </Text>
-    </View>
+
+        <TextInput
+            style={styles.input}
+            placeholder="Deck Title"
+            value={deckTitle}
+            onChangeText={changeDeckTitle}
+        />
+
+        <TouchableOpacity
+            style={styles.button}
+            onPress={persistNewDeck}
+        >
+            <Text style={styles.buttonText}>Submit</Text>
+        </TouchableOpacity>
+    </KeyboardAvoidingView>
 )
 
 
