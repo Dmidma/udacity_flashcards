@@ -4,7 +4,6 @@ import { TabNavigator, StackNavigator } from 'react-navigation'
 import { Constants } from 'expo'
 import NewDeck from './components/NewDeck'
 import Decks from './components/Decks'
-import Deck from './components/Deck'
 
 const Tabs = TabNavigator({
     Decks: {
@@ -21,16 +20,9 @@ const Tabs = TabNavigator({
     }
 })
 
-
-const MainNavigator = StackNavigator({
+const Stack = StackNavigator({
     Main: {
-        screen: Tabs,
-        navigationOptions: {
-            header: null
-        }
-    },
-    DeckDetail: {
-        screen: Deck
+        screen: Tabs
     }
 })
 
@@ -42,7 +34,7 @@ export default class App extends React.Component {
                 <StatusBar translucent backgroundColor='#ff4562'/>
             </View>
 
-            <MainNavigator />
+            <Stack />
         </View>
     );
   }

@@ -6,18 +6,18 @@ import styles from './DecksStyling'
 
 
 const DecksTemplate = (decks, openDeck) => (
-        <FlatList 
-            data={decks}
-            renderItem={({ item }) => (
-                <DeckListItem
-                    id={item.title}
-                    deckTitle={item.title}
-                    deckCardsNumber={item.questions? item.questions.length: 0}
-                    openDeck={openDeck}
-                />
-            )}
-            keyExtractor={(deck) => deck.title}
-        />
+    <FlatList 
+        data={decks}
+        renderItem={({ item }) => (
+            <DeckListItem
+                id={item.title}
+                deckTitle={item.title}
+                deckCardsNumber={item.questions? item.questions.length: 0}
+                openDeck={openDeck}
+            />
+        )}
+        keyExtractor={(deck) => deck.title}
+    />
 )
 
 export default DecksTemplate

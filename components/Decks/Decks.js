@@ -14,6 +14,7 @@ class Decks extends Component {
 
     openDeck = (id) => {
         console.log(`Clicked on Deck ${id}`)
+        this.props.navigation.navigate('DeckDetail')
     }
 
     render() {
