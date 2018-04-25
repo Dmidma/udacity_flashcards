@@ -41,9 +41,9 @@ class Quiz extends Component {
             QuizTemplate(
                 deck, 
                 index, 
-                pressAnswer, 
-                pressCorrect, 
-                pressIncorrect
+                this.pressAnswer, 
+                this.pressCorrect, 
+                this.pressIncorrect
             )
         )
     }
