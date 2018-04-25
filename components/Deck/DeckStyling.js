@@ -3,12 +3,16 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         flexDirection: 'column'
     },
-    fonty: {
-        fontSize: 40
+    deckTitle: {
+        fontSize: 30
+    },
+    deckCards: {
+        color: '#9299a3',
+        fontSize: 20
     },
     addBtn: {
         backgroundColor: '#ffffff',

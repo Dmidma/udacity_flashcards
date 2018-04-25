@@ -12,7 +12,10 @@ class Deck extends Component {
     }
 
     state = {
-        deck: {}
+        deck: {
+            tite: '',
+            questions: []
+        }
     }
         
     componentDidMount() {
@@ -30,9 +33,13 @@ class Deck extends Component {
     }
 
     render() {
-        const { title } = this.state.deck
         return (
-            DeckTemplate(title, this.addCard, this.startQuiz)
+            DeckTemplate(
+                this.state.deck.title, 
+                this.state.deck.questions.length, 
+                this.addCard, 
+                this.startQuiz
+            )
         )
     }
 }

@@ -19,6 +19,7 @@ class NewDeck extends Component {
             } else {
                 Alert.alert('yeey', result.success)
                 this.setState({ deckTitle: '' })
+                this.props.screenProps.updateDecks()
             }
         })
     }

@@ -50,18 +50,19 @@ const MainNavigator = StackNavigator({
 })
 
 export default class App extends React.Component {
-    componentDidMount() {
-        console.log("App: Here")
-        // setDefaultDecks()
-        /*
-        saveDeckTitle("Terma").then((result) => {
-            console.log(result)
-        })
-        
-        addCardToDeck("Terma", { question: "q", answer: "a" })
-*/
-
+    state = {
+        decks: []
     }
+
+    componentDidMount() {
+        this.updateDecks()
+    }
+
+
+    updateDecks = () => {
+        getDecks().then((decks) => this.setState(({ decks })))
+    }
+
 
     render() {
         return (
@@ -69,8 +70,12 @@ export default class App extends React.Component {
             <View style={{height: Constants.statusBarHeight}}>
             <StatusBar translucent backgroundColor='#ff4562'/>
             </View>
-
-            <MainNavigator />
+                <MainNavigator
+                    screenProps={{
+                        decks: this.state.decks,
+                        updateDecks: this.updateDecks
+                    }}
+                />
             </View>
         );
     }
