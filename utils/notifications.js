@@ -53,8 +53,6 @@ export function setLocalNotification () {
                         }
                     })
             }
-
-            console.log("ye")
         })
 }
 
