@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 5,
         borderWidth: 2,
-        borderColor: '#000000'
+        borderColor: '#000000',
+        marginBottom: 30
     },
     addBtnText: {
         fontSize: 30,

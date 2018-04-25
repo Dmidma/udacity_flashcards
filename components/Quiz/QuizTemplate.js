@@ -25,18 +25,20 @@ const QuizTemplate = (deck, index, mainText, result,
                 >
                     <Text style={styles.answerBtnText}>Answer</Text>
                 </TouchableOpacity>
-                <TouchableOpacity 
-                    style={styles.corretBtn}
-                    onPress={pressCorrect}
-                >
-                    <Text style={styles.btnText}>Correct</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    style={styles.incorrectBtn}
-                    onPress={pressIncorrect}
-                >
-                    <Text style={styles.btnText}>Incorrect</Text>
-                </TouchableOpacity>
+                <View>
+                    <TouchableOpacity 
+                        style={styles.corretBtn}
+                        onPress={pressCorrect}
+                    >
+                        <Text style={styles.btnText}>Correct</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                        style={styles.incorrectBtn}
+                        onPress={pressIncorrect}
+                    >
+                        <Text style={styles.btnText}>Incorrect</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         )}
 
@@ -45,19 +47,20 @@ const QuizTemplate = (deck, index, mainText, result,
                 <Text style={styles.mainText}>
                     Score: {result}%
                 </Text>
-                <TouchableOpacity
-                    style={styles.restartBtn}
-                    onPress={pressRestart}
-                >
-                    <Text style={styles.btnText}>Restart</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.goBakBtn}
-                    onPress={pressGoBack}
-                >
-                    <Text style={styles.btnText}>Go Back</Text>
-                </TouchableOpacity>
-
+                <View>
+                    <TouchableOpacity
+                        style={styles.restartBtn}
+                        onPress={pressRestart}
+                    >
+                        <Text style={styles.btnText}>Restart</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.goBakBtn}
+                        onPress={pressGoBack}
+                    >
+                        <Text style={styles.btnText}>Go Back</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         )}
     </View>

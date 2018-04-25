@@ -1,10 +1,16 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { 
+    View, 
+    Text, 
+    TouchableOpacity,
+    Animated
+} 
+from 'react-native'
 import styles from './DeckStyling'
 
 
-const DeckTemplate = (title, cardsNumber, addCard, startQuiz) => (
-    <View style={styles.container}>
+const DeckTemplate = (title, cardsNumber, addCard, startQuiz, opacity) => (
+    <Animated.View style={[styles.container, { opacity }]}>
         <View>
             <Text style={styles.deckTitle}>
                 {title}
@@ -31,7 +37,7 @@ const DeckTemplate = (title, cardsNumber, addCard, startQuiz) => (
                 </Text>
             </TouchableOpacity>
         </View>
-    </View>
+    </Animated.View>
 )
 
 

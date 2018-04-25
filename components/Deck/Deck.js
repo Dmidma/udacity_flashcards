@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import DeckTemplate from './DeckTemplate'
 import { getDeck } from '../../utils/api'
+import { Animated, Dimensions } from 'react-native'
 
 class Deck extends Component {
 
@@ -14,10 +15,17 @@ class Deck extends Component {
         deck: {
             title: '',
             questions: []
-        }
+        },
+        opacity: new Animated.Value(0),
     }
     
     componentDidMount() {
+        const { opacity, width, height  } = this.state
+
+        Animated.timing(opacity, { toValue: 1, duration: 1000  })
+            .start()
+
+
         this.props.screenProps.updateCurrentDeck(this.props.navigation.state.params.id)
     }
 
@@ -31,13 +39,15 @@ class Deck extends Component {
 
     render() {
         const deck = this.props.screenProps.currentDeck
+        const { opacity } = this.state
         if (deck === null) return null
         return (
             DeckTemplate(
                 deck.title, 
                 deck.cardsNumber, 
                 this.addCard, 
-                this.startQuiz
+                this.startQuiz,
+                opacity,
             )
         )
     }

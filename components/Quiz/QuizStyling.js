@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 5,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: 30
     },
     incorrectBtn: {
         backgroundColor: '#ef2f00',
@@ -44,7 +45,8 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 5,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: 30
     },
     btnText: {
         fontSize: 20,

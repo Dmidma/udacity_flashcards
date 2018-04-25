@@ -48,7 +48,14 @@ export function removeAllDecks() {
 
 export function getDecks() {
     return AsyncStorage.getItem(STORAGE_KEY)
-        .then((result) => JSON.parse(result))
+        .then((result) => {
+            if (result === null) {
+                setDefaultDecks()
+                return defaultDecks
+            } else {
+                return JSON.parse(result)
+            }
+        })
         .then(parseDecks)
 }
 
