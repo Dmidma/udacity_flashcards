@@ -13,7 +13,7 @@ class Deck extends Component {
 
     state = {
         deck: {
-            tite: '',
+            title: '',
             questions: []
         }
     }
@@ -25,7 +25,7 @@ class Deck extends Component {
     }
 
     addCard = () => {
-        this.props.navigation.navigate('AddCard', { deckTitle: this.state.title })
+        this.props.navigation.navigate('AddCard', { deckTitle: this.state.deck.title })
     }
 
     startQuiz = () => {

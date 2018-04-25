@@ -1,5 +1,7 @@
 import { Component } from 'react'
 import AddCardTemplate from './AddCardTemplate'
+import { addCardToDeck } from '../../utils/api'
+import { Keyboard, Alert } from 'react-native'
 
 class AddCard extends Component {
     
@@ -13,10 +15,15 @@ class AddCard extends Component {
 
     persistNewCard = () => {
         const { question, answer } = this.state
+        const title = this.props.navigation.state.params.deckTitle 
+    
+        Keyboard.dismiss()
+        
+        addCardToDeck(title, { question, answer })
+            .then((result) => Alert.alert('Yeey', result.success))
 
-        console.log("Persisting new Card ....")
-        console.log(`Question: ${question}`)
-        console.log(`Answer: ${answer}`)
+        this.changeQuestion('')
+        this.changeAnswer('')
     }
 
     render() {

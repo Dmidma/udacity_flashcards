@@ -78,7 +78,7 @@ export function addCardToDeck(title, card) {
             const decks = JSON.parse(result)
             if (decks[title]) {
                 decks[title].questions.push(card)
-                return AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(decks))
+                return AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(decks)).then((result) => ({"success": `A new card has been added to ${title} deck =D`}))
             }
         })
 }
