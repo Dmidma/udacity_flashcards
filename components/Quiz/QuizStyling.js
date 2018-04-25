@@ -8,7 +8,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     mainText: {
-        fontSize: 40
+        fontSize: 40,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     answerBtnText: {
         color: '#ef2f00',

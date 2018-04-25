@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import QuizTemplate from './QuizTemplate'
 import { getDeck } from '../../utils/api'
+import { clearLocalNotification, setLocalNotification } from '../../utils/notifications'
 
 class Quiz extends Component {
 
@@ -30,6 +31,8 @@ class Quiz extends Component {
         const nextIndex = this.state.index + 1
         if (nextIndex === this.state.deck.questions.length) {
             this.setResult() 
+
+            clearLocalNotification().then(setLocalNotification)
             return
         }
 

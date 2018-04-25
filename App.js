@@ -7,7 +7,6 @@ import Decks from './components/Decks'
 import Deck from './components/Deck'
 import AddCard from './components/AddCard'
 import Quiz from './components/Quiz'
-
 import { 
     getDecks,
     saveDeckTitle,
@@ -15,6 +14,7 @@ import {
     addCardToDeck,
     setDefaultDecks
 } from './utils/api'
+import { setLocalNotification } from './utils/notifications'
 
 const Tabs = TabNavigator({
     Decks: {
@@ -64,6 +64,7 @@ export default class App extends React.Component {
 
     componentDidMount() {
         this.updateDecks()
+        setLocalNotification()
     }
 
     toggleRefresh = () => this.setState((state) => ({ refresh: !state.refresh }))
