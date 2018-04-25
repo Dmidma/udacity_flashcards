@@ -1,26 +1,29 @@
-/**
- * This is a generated Template for Deck Component.
- * This is used to better organize things.
- *
- * You can copy the content of the JSX content into the render 
- * function of the component.
- *
- * For more React Native UI component, check: 
- * https://facebook.github.io/react-native/docs/components-and-apis.html#basic-components
- *
- * It can be safely deleted.
- */
-
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './DeckStyling'
 
 
-const DeckTemplate = () => (
+const DeckTemplate = (title, addCard, startQuiz) => (
     <View style={styles.container}>
         <Text style={styles.fonty}>
-            This is <Text style={styles.pretty}>Deck</Text> component.
+            {title}
         </Text>
+        <TouchableOpacity
+            style={styles.addBtn}
+            onPress={addCard}
+        >
+            <Text style={styles.addBtnText}>
+                Add Card
+            </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+            style={styles.startQuizBtn}
+            onPress={startQuiz}
+        >
+            <Text style={styles.startQuizBtnText}>
+                Start Quiz
+            </Text>
+        </TouchableOpacity>
     </View>
 )
 
