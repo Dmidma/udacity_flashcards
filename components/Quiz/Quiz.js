@@ -7,40 +7,68 @@ class Quiz extends Component {
     state = {
         deck: null,
         index: -1,
-        mainText: ''
+        mainText: null,
+        wrongAnswers: 0,
+        result: null
     }
 
     componentDidMount() {
        getDeck(this.props.navigation.state.params.deckTitle)
-        .then((deck) => this.setState({ deck, index: 0 }))
+        .then((deck) => this.setState({ 
+            deck,
+            index: 0,
+            mainText: deck.questions[0].question
+        }))
     }
+    
+    calculatePercentage = (total, wrong) => (Math.round((100 * (total - wrong)) / total))
+
+
+    setResult = () => this.setState((state) => ({result: this.calculatePercentage(state.deck.questions.length, state.wrongAnswers)}))
 
     moveToNextQuestion = () => {
         const nextIndex = this.state.index + 1
-        this.setState((state) => 
-            ({ index: (nextIndex === state.deck.questions.length)? nextIndex - 1 : nextIndex  })
-        )
+        if (nextIndex === this.state.deck.questions.length) {
+            this.setResult() 
+            return
+        }
+
+        this.setState({
+            index: nextIndex,
+            mainText: this.state.deck.questions[nextIndex].question
+        })
     }
 
+    increaseWrongAnswers = () => this.setState((state) => ({ wrongAnswers: state.wrongAnswers + 1 }))
+
+    setMainText = (mainText) => this.setState({ mainText })
+    
+    setCurrentQuestion = () => this.setMainText(this.state.deck.questions[this.state.index].question)
+
+    setCurrentAnswer = () => this.setMainText(this.state.deck.questions[this.state.index].answer)
+
     pressAnswer = () => {
-        console.log("Pressed on Answer")
+        this.setCurrentAnswer()
     }
 
     pressCorrect = () => {
-        console.log("Pressed on Correct")
+        this.moveToNextQuestion()
     }
 
     pressIncorrect = () => {
-        console.log("Pressed on Incorrect")
+        this.increaseWrongAnswers()
+        this.moveToNextQuestion()
     }
 
     render() {
-        const { deck, index } = this.state
+        const { deck, index, mainText, result } = this.state
         if (deck === null) return null
         return (
             QuizTemplate(
                 deck, 
-                index, 
+                index,
+                mainText,
+                result,
                 this.pressAnswer, 
                 this.pressCorrect, 
                 this.pressIncorrect

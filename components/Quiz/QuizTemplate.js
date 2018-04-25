@@ -3,21 +3,21 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './QuizStyling'
 
 
-const QuizTemplate = (deck, index, pressAnswer, pressCorrect, pressIncorrect) => (
+const QuizTemplate = (deck, index, mainText, result, pressAnswer, pressCorrect, pressIncorrect) => (
     <View style={styles.container}>
         {deck.questions.length === 0 && (
-            <Text style={styles.fonty}>
+            <Text style={styles.mainText}>
                 No cards in this deck =(
             </Text>
         )}
 
-        {deck.questions.length > 0 && (
+        {deck.questions.length > 0 && result === null && (
             <View style={styles.container}>
                 <Text>
                     {`${index + 1} / ${deck.questions.length}`}
                 </Text>
                 <Text style={styles.mainText}>
-                    {deck.questions[index].question}?
+                    {mainText}
                 </Text>
                 <TouchableOpacity
                     onPress={pressAnswer}
@@ -37,6 +37,12 @@ const QuizTemplate = (deck, index, pressAnswer, pressCorrect, pressIncorrect) =>
                     <Text style={styles.btnText}>Incorrect</Text>
                 </TouchableOpacity>
             </View>
+        )}
+
+        {result !== null && (
+            <Text style={styles.mainText}>
+                Score: {result}%
+            </Text>
         )}
     </View>
 )
