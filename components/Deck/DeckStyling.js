@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     fonty: {
-        fontSize: 20
+        fontSize: 40
     },
     addBtn: {
         backgroundColor: '#ffffff',

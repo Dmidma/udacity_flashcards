@@ -20,7 +20,7 @@ class Deck extends Component {
     }
 
     addCard = () => {
-        console.log("Add Card Clicked")
+        this.props.navigation.navigate('AddCard', { deckTitle: this.state.title })
     }
 
     startQuiz = () => {

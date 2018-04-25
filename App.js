@@ -5,6 +5,7 @@ import { Constants } from 'expo'
 import NewDeck from './components/NewDeck'
 import Decks from './components/Decks'
 import Deck from './components/Deck'
+import AddCard from './components/AddCard'
 
 const Tabs = TabNavigator({
     Decks: {
@@ -31,6 +32,12 @@ const MainNavigator = StackNavigator({
     },
     DeckDetail: {
         screen: Deck
+    },
+    AddCard: {
+        screen: AddCard,
+        navigationOptions: {
+            title: 'Add Card'
+        }
     }
 })
 
