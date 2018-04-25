@@ -22,7 +22,7 @@ class Deck extends Component {
     componentDidMount() {
         const { opacity, width, height  } = this.state
 
-        Animated.timing(opacity, { toValue: 1, duration: 1000  })
+        Animated.timing(opacity, { toValue: 1, duration: 2000  })
             .start()
 
 
