@@ -26,7 +26,7 @@ class Deck extends Component {
     }
 
     startQuiz = () => {
-        console.log("Start quiz clicked")
+        this.props.navigation.navigate('Quiz', { deckTitle: this.props.screenProps.currentDeck.title })
     }
 
     render() {

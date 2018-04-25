@@ -6,6 +6,7 @@ import NewDeck from './components/NewDeck'
 import Decks from './components/Decks'
 import Deck from './components/Deck'
 import AddCard from './components/AddCard'
+import Quiz from './components/Quiz'
 
 import { 
     getDecks,
@@ -45,6 +46,12 @@ const MainNavigator = StackNavigator({
         screen: AddCard,
         navigationOptions: {
             title: 'Add Card',
+        }
+    },
+    Quiz: {
+        screen: Quiz,
+        navigationOptions: {
+            title: 'Quiz'
         }
     }
 })
