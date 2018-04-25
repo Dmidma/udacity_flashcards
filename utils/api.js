@@ -68,8 +68,7 @@ export function saveDeckTitle(title) {
                 return {"error": "Deck Title already exists!"}
             }
             decks[title] = {title, questions: []}
-            console.log(decks)
-            return AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(decks))
+            return AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(decks)).then((result) => ({"success": "A Deck has been added =D"}))
         })
 }
 

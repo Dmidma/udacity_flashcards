@@ -1,5 +1,7 @@
 import { Component } from 'react'
 import NewDeckTemplate from './NewDeckTemplate'
+import { saveDeckTitle } from '../../utils/api'
+import { Keyboard, Alert } from 'react-native'
 
 class NewDeck extends Component {
 
@@ -10,9 +12,17 @@ class NewDeck extends Component {
     changeDeckTitle = (deckTitle) => this.setState({ deckTitle })
 
     persistNewDeck = () => {
-        // TODO: persist the new deck in the storage
-        console.log(this.state.deckTitle)
+        Keyboard.dismiss()
+        saveDeckTitle(this.state.deckTitle).then(result => {
+            if (result.error) {
+                Alert.alert('oops', result.error)
+            } else {
+                Alert.alert('yeey', result.success)
+                this.setState({ deckTitle: '' })
+            }
+        })
     }
+
     render() {
         const { deckTitle } = this.state
         return (

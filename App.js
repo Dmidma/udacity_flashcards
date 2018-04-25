@@ -53,12 +53,13 @@ export default class App extends React.Component {
     componentDidMount() {
         console.log("App: Here")
         // setDefaultDecks()
+        /*
         saveDeckTitle("Terma").then((result) => {
             console.log(result)
         })
         
         addCardToDeck("Terma", { question: "q", answer: "a" })
-
+*/
 
     }
 
