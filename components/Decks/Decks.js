@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import DecksTemplate from './DecksTemplate'
-import { getDefaultDecks } from '../../utils/api'
+import { getDecks } from '../../utils/api'
 
 class Decks extends Component {
 
@@ -9,7 +9,8 @@ class Decks extends Component {
     }
 
     componentDidMount() {
-        this.setState({ decks: getDefaultDecks() })
+        console.log("Decks: here")
+        getDecks().then((decks) => this.setState(({ decks })))
     }
 
     openDeck = (id) => {

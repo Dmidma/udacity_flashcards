@@ -1,22 +1,24 @@
 import { Component } from 'react'
 import DeckTemplate from './DeckTemplate'
+import { getDeck } from '../../utils/api'
 
 class Deck extends Component {
 
     static navigationOptions = ({ navigation }) => {
         const { params } = navigation.state
 
-
         // TODO: add headerStyle in the returned object
         return {title: params.id}
     }
 
     state = {
-        title: ''
+        deck: {}
     }
         
     componentDidMount() {
-        this.setState({title: this.props.navigation.state.params.id})
+        getDeck(this.props.navigation.state.params.id).then((deck) => {
+            this.setState({ deck })
+        })
     }
 
     addCard = () => {
@@ -28,7 +30,7 @@ class Deck extends Component {
     }
 
     render() {
-        const { title } = this.state
+        const { title } = this.state.deck
         return (
             DeckTemplate(title, this.addCard, this.startQuiz)
         )

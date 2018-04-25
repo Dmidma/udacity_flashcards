@@ -7,6 +7,14 @@ import Decks from './components/Decks'
 import Deck from './components/Deck'
 import AddCard from './components/AddCard'
 
+import { 
+    getDecks,
+    saveDeckTitle,
+    getDeck,
+    addCardToDeck,
+    setDefaultDecks
+} from './utils/api'
+
 const Tabs = TabNavigator({
     Decks: {
         screen: Decks,
@@ -31,28 +39,40 @@ const MainNavigator = StackNavigator({
         }
     },
     DeckDetail: {
-        screen: Deck
+        screen: Deck,
     },
     AddCard: {
         screen: AddCard,
         navigationOptions: {
-            title: 'Add Card'
+            title: 'Add Card',
         }
     }
 })
 
 export default class App extends React.Component {
-  render() {
-    return (
-        <View style={{ flex: 1 }}>
+    componentDidMount() {
+        console.log("App: Here")
+        // setDefaultDecks()
+        saveDeckTitle("Terma").then((result) => {
+            console.log(result)
+        })
+        
+        addCardToDeck("Terma", { question: "q", answer: "a" })
+
+
+    }
+
+    render() {
+        return (
+            <View style={{ flex: 1 }}>
             <View style={{height: Constants.statusBarHeight}}>
-                <StatusBar translucent backgroundColor='#ff4562'/>
+            <StatusBar translucent backgroundColor='#ff4562'/>
             </View>
 
             <MainNavigator />
-        </View>
-    );
-  }
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
