@@ -11,8 +11,7 @@ class Decks extends Component {
 
     render() {
         return (
-            DecksTemplate(
-                this.props.screenProps.decks, this.openDeck)
+            DecksTemplate(this.props.screenProps.decks, this.openDeck)
         )
     }
 }

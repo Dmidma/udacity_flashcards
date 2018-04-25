@@ -7,7 +7,6 @@ class Deck extends Component {
     static navigationOptions = ({ navigation }) => {
         const { params } = navigation.state
 
-        // TODO: add headerStyle in the returned object
         return {title: params.id}
     }
 
@@ -17,15 +16,13 @@ class Deck extends Component {
             questions: []
         }
     }
-        
+    
     componentDidMount() {
-        getDeck(this.props.navigation.state.params.id).then((deck) => {
-            this.setState({ deck })
-        })
+        this.props.screenProps.updateCurrentDeck(this.props.navigation.state.params.id)
     }
 
     addCard = () => {
-        this.props.navigation.navigate('AddCard', { deckTitle: this.state.deck.title })
+        this.props.navigation.navigate('AddCard', { deckTitle: this.props.screenProps.currentDeck.title })
     }
 
     startQuiz = () => {
@@ -33,10 +30,12 @@ class Deck extends Component {
     }
 
     render() {
+        const deck = this.props.screenProps.currentDeck
+        if (deck === null) return null
         return (
             DeckTemplate(
-                this.state.deck.title, 
-                this.state.deck.questions.length, 
+                deck.title, 
+                deck.cardsNumber, 
                 this.addCard, 
                 this.startQuiz
             )

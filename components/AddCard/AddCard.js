@@ -24,6 +24,8 @@ class AddCard extends Component {
 
         this.changeQuestion('')
         this.changeAnswer('')
+
+        this.props.screenProps.increaseCardNumbers()
     }
 
     render() {

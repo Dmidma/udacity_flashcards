@@ -51,17 +51,42 @@ const MainNavigator = StackNavigator({
 
 export default class App extends React.Component {
     state = {
-        decks: []
+        decks: [],
+        currentDeck: null
     }
 
     componentDidMount() {
         this.updateDecks()
     }
 
+    toggleRefresh = () => this.setState((state) => ({ refresh: !state.refresh }))
 
-    updateDecks = () => {
-        getDecks().then((decks) => this.setState(({ decks })))
-    }
+    updateDecks = () => getDecks().then((decks) => this.setState(({ decks })))
+
+    updateCurrentDeck = (title) => getDeck(title)
+        .then((deck) => this.setState({ 
+            currentDeck: {
+                title: deck.title, 
+                cardsNumber: deck.questions.length 
+            }
+        }))
+    
+    increaseCardNumbers = () => 
+        this.setState((state) => { 
+
+            // TODO: change this to a proper way
+            let decks = state.decks
+            decks[decks.findIndex((deck) => (deck.title === state.currentDeck.title))].questions.push({})
+
+            
+            return {
+                decks: [...decks],
+                currentDeck: {
+                    title: state.currentDeck.title,
+                    cardsNumber: state.currentDeck.cardsNumber + 1
+                } 
+            }
+        })
 
 
     render() {
@@ -73,7 +98,10 @@ export default class App extends React.Component {
                 <MainNavigator
                     screenProps={{
                         decks: this.state.decks,
-                        updateDecks: this.updateDecks
+                        updateDecks: this.updateDecks,
+                        currentDeck: this.state.currentDeck,
+                        updateCurrentDeck: this.updateCurrentDeck,
+                        increaseCardNumbers: this.increaseCardNumbers
                     }}
                 />
             </View>
