@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './QuizStyling'
 
 
-const QuizTemplate = (deck, index, mainText, result, pressAnswer, pressCorrect, pressIncorrect) => (
+const QuizTemplate = (deck, index, mainText, result, 
+    pressAnswer, pressCorrect, pressIncorrect, pressGoBack, pressRestart) => (
     <View style={styles.container}>
         {deck.questions.length === 0 && (
             <Text style={styles.mainText}>
@@ -40,9 +41,24 @@ const QuizTemplate = (deck, index, mainText, result, pressAnswer, pressCorrect, 
         )}
 
         {result !== null && (
-            <Text style={styles.mainText}>
-                Score: {result}%
-            </Text>
+            <View style={styles.container}>
+                <Text style={styles.mainText}>
+                    Score: {result}%
+                </Text>
+                <TouchableOpacity
+                    style={styles.restartBtn}
+                    onPress={pressRestart}
+                >
+                    <Text style={styles.btnText}>Restart</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.goBakBtn}
+                    onPress={pressGoBack}
+                >
+                    <Text style={styles.btnText}>Go Back</Text>
+                </TouchableOpacity>
+
+            </View>
         )}
     </View>
 )

@@ -30,6 +30,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    goBakBtn: {
+        backgroundColor: '#000000',
+        width: 200,
+        padding: 20,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    restartBtn: {
+        backgroundColor: '#261ff2',
+        width: 200,
+        padding: 20,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     btnText: {
         fontSize: 20,
         color: '#ffffff'

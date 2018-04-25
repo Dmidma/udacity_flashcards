@@ -60,6 +60,16 @@ class Quiz extends Component {
         this.moveToNextQuestion()
     }
 
+    pressRestart = () => this.setState((state) => ({
+        index: 0,
+        mainText: state.deck.questions[0].question,
+        result: null,
+        wrongAnswers: 0
+    }))
+        
+
+    pressGoBack = () => this.props.navigation.goBack()
+
     render() {
         const { deck, index, mainText, result } = this.state
         if (deck === null) return null
@@ -71,7 +81,9 @@ class Quiz extends Component {
                 result,
                 this.pressAnswer, 
                 this.pressCorrect, 
-                this.pressIncorrect
+                this.pressIncorrect,
+                this.pressGoBack,
+                this.pressRestart
             )
         )
     }
