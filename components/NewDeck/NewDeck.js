@@ -17,9 +17,11 @@ class NewDeck extends Component {
             if (result.error) {
                 Alert.alert('oops', result.error)
             } else {
-                Alert.alert('yeey', result.success)
+                //Alert.alert('yeey', result.success)
+                const id = this.state.deckTitle
                 this.setState({ deckTitle: '' })
                 this.props.screenProps.updateDecks()
+                this.props.navigation.navigate('DeckDetail', { id })
             }
         })
     }
